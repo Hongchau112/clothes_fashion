@@ -1,3 +1,55 @@
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+    * {box-sizing: border-box;}
+
+    .topnav .search-container {
+        float: right;
+    }
+
+    .topnav input[type=text] {
+        padding: 2px 11px;
+        margin-top: 8px;
+        font-size: 16px;
+        border: none;
+        border: solid #f98e8e 1px;
+    }
+
+    .topnav .search-container button {
+        float: right;
+        padding: 6px 10px;
+        margin-top: 8px;
+        margin-right: 16px;
+        background: #ddd;
+        font-size: 17px;
+        border: none;
+        cursor: pointer;
+    }
+
+    #submit-search {
+        font-size: 12px;!important;
+        padding: 6px 17px;!important;
+        background-color: #fdd5ab;!important;
+    }
+    .fa fa-search {
+        font-size: 14px;
+    }
+
+    .navbar-right {
+        margin: -6px 35px 0 -20px;
+    }
+
+    #cart {
+        color: #f1bf8b;
+    }
+
+
+
+
+
+
+</style>
+
 <header>
     <nav class="navbar navbar-expand-lg ">
         <div class="container">
@@ -60,14 +112,16 @@
                     @endforeach
 
                 </ul>
-                <div class="navbar-right">
-                    <div id="search-bar">
-                        <i id='toggle-search' class="fa fa-search"></i>
-                        <input style='display:none;' id='searchBar' name='search' type='search' placeholder='Search'>
+                <div class="topnav">
+                    <div class="search-container">
+                        <form action="{{route('guest.search')}}" method="GET">
+                            <input type="text" placeholder="Search.." name="key_search">
+                            <button type="submit" id="submit-search"><i class="fa fa-search"></i></button>
+                        </form>
                     </div>
                 </div>
                 <div id="shopping-cart">
-                    <a href="{{route('guest.show_cart')}}"><i class="fa fa-shopping-cart"></i></a>
+                    <a href="{{route('guest.show_cart')}}"><i class="fa fa-shopping-cart" style="color: #eb9773; font-size: 22px;"></i></a>
                     <span id="cart">@if(Session::has('cart')!=null){{Session::get('cart')->total_quanty}} @else 0 @endif</span>
                 </div>
             </div>

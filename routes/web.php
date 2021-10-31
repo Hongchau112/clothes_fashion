@@ -70,12 +70,16 @@ Route::get('guest/index', [PageController::class, 'index'])->name('guest.index')
 Route::get('guest/show', [PageController::class, 'show'])->name('guest.show');
 Route::get('guest/detail/{id}', [PageController::class, 'detail'])->name('guest.detail');
 Route::post('guest/get_price', [PageController::class, 'get_price'])->name('guest.get_price');
+Route::get('guest/search', [PageController::class, 'search'])->name('guest.search');
+
 Route::get('guest/add_cart/{id}', [CartController::class, 'add_cart'])->name('guest.add_cart');
 Route::get('guest/demo', [CartController::class, 'demo'])->name('guest.demo');
 Route::post('guest/get_price_id', [PageController::class, 'get_price_id'])->name('guest.get_price_id');
 Route::get('guest/show_cart', [CartController::class, 'show_cart'])->name('guest.show_cart');
 Route::get('guest/delete_cart/{id}', [CartController::class, 'delete_cart'])->name('guest.delete_cart');
 Route::get('guest/update_cart/{id}', [CartController::class,'update_cart'])->name('guest.update_cart');
+
+
 
 Route::get('guest/order', [CartController::class,'order'])->name('guest.order');
 

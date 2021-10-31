@@ -66,6 +66,21 @@ class PageController extends Controller
         return view('guest.pages.order', compact('categories'));
     }
 
+    public function search(Request $request)
+    {
+        $key_search = $request->get('key_search');
+        $categories = ProductCategory::all();
+        $images = Image::all();
+
+        $products = Product::select('products.*')
+            ->join('product_types', 'product_types.id', '=', 'products.product_type_id')
+            ->where('product_types.name','like','%'.$key_search.'%')->orWhere('products.name','like','%'.$key_search.'%')
+            ->paginate(12);
+        $products->appends(['$key_search' => $key_search]);
+        return view('guest.pages.index',compact('products','categories', 'images'));
+    }
+
+
 
 
 

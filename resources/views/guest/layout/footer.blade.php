@@ -1,6 +1,6 @@
 <footer class="footer-cosmetic">
     <div class="container">
-        <div class="row footer-content ">
+        <div class="row footer-content" style="margin-right: 0px; margin-left: 55px;">
             <div id="left-side">
                 <h5 class="footer-title ">Liên hệ</h5>
                 <div class="footer-contact">

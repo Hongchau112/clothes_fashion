@@ -38,12 +38,6 @@
                             <li class="nk-menu-item">
                                 <a href="{{route('admin.products.index')}}" class="nk-menu-link"><span class="nk-menu-text">Product List</span></a>
                             </li>
-                            <li class="nk-menu-item">
-                                <a href="html/product-card.html" class="nk-menu-link"><span class="nk-menu-text">Product Card</span></a>
-                            </li>
-                            <li class="nk-menu-item">
-                                <a href="html/product-details.html" class="nk-menu-link"><span class="nk-menu-text">Product Details</span></a>
-                            </li>
                         </ul><!-- .nk-menu-sub -->
                     </li><!-- .nk-menu-item -->
                     <li class="nk-menu-item has-sub">

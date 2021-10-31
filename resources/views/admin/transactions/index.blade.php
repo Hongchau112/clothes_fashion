@@ -17,15 +17,15 @@
                                         </div>
                                         <div class="card-tools mr-n1">
                                             <ul class="btn-toolbar">
-                                                <li>
-                                                    <a href="#" class="btn btn-icon search-toggle toggle-search" data-target="search"><em class="icon ni ni-search"></em></a>
-                                                </li><!-- li -->
-                                                <li class="btn-toolbar-sep"></li><!-- li -->
+{{--                                                <li>--}}
+{{--                                                    <a href="#" class="btn btn-icon search-toggle toggle-search" data-target="search"><em class="icon ni ni-search"></em></a>--}}
+{{--                                                </li><!-- li -->--}}
+{{--                                                <li class="btn-toolbar-sep"></li><!-- li -->--}}
                                                 <li>
                                                     <div class="dropdown">
-                                                        <a href="#" class="btn btn-trigger btn-icon dropdown-toggle" data-toggle="dropdown">
-                                                            <em class="icon ni ni-setting"></em>
-                                                        </a>
+{{--                                                        <a href="#" class="btn btn-trigger btn-icon dropdown-toggle" data-toggle="dropdown">--}}
+{{--                                                            <em class="icon ni ni-setting"></em>--}}
+{{--                                                        </a>--}}
                                                         <div class="dropdown-menu dropdown-menu-right dropdown-menu-xs">
                                                             <ul class="link-check">
                                                                 <li><span>Show</span></li>

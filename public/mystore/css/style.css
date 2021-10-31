@@ -677,11 +677,11 @@ input::-webkit-inner-spin-button {
 
 #order-button {
     width: 200px;!important;
-    margin-bottom: 200px;!important;
-    margin-left: 280px;!important;
+    margin-bottom: 20px;!important;
+    margin-left: 161px;!important;
     background-color: #feaa8e;!important;
     border-color: transparent;!important;
-    font-size: 21px;!important;
+    font-size: 18px;!important;
 }
 
 
@@ -724,7 +724,7 @@ input::-webkit-inner-spin-button {
 
 #shopping-cart {
     margin-left: 10px;
-    margin-top: -10px;
+    /*margin-top: -10px;*/
 }
 
 #search-bar {
@@ -768,6 +768,64 @@ input::-webkit-inner-spin-button {
     margin-left: 80px;
 }
 
-.row pb-5 {
-
+#order-info {
+    margin-left: 70px;
+    background-color: #ffc9ae;
+    margin-top: 90px;
 }
+
+#title-order {
+    margin: 33px 161px;
+    padding: 10px 10px;
+    background-color: #ef987a;
+    text-align: center;!important;
+    font-size: 27px;
+    color: white;
+    font-weight: bold;
+}
+
+.label{
+    font-weight: bold;
+    color: #860707;
+}
+
+#phone {
+    margin-left: 300px;
+    margin-top: -86px;
+}
+
+#note-order, #mail-order, #address-order {
+    padding: 0px 10px;
+    margin-left: 0px;
+    width: 480px;
+}
+
+#phone_number {
+    width: 158px;
+}
+
+.order-title {
+    margin-top: 18px;
+    padding: 14px 52px;
+    font-weight: bold;
+    color: #bf300a;
+    background-color: #f9d194;
+}
+
+#total-price {
+    background-color: #f9d194;
+    padding: 21px 21px;!important;
+    margin: 23px 0px;!important;
+}
+
+#total {
+    color: #a02504;
+    margin-left: 65px;
+    font-weight: bold;
+}
+
+#item {
+    color: #a02504;
+    font-weight: bold;
+}
+
