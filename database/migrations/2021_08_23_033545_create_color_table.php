@@ -17,6 +17,7 @@ class CreateColorTable extends Migration
             $table->bigIncrements('id');
             $table->string('name', 255);
             $table->timestamps();
+//            $table->foreign('product_id')->references('id')->on('products');
         });
     }
 

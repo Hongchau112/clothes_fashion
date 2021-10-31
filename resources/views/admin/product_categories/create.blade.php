@@ -10,7 +10,7 @@
                 <div class="row g-gs">
                     <div class="col-lg-12">
                         <div class="card-inner card-inner-sm">
-                            <form action="/product_categories/store" method="post">
+                            <form action="/admin/product_categories/store" method="post">
                                 @csrf
                                 <div class="form-group">
                                     <label class="form-label" for="name">Tên danh mục <span class="text-danger">*</span></label>
@@ -25,7 +25,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="form-label" for="parent_id">Danh mục cha  <span class="text-danger">*</span></label>
+                                    <label class="form-label" for="parent_category_id">Danh mục cha  <span class="text-danger">*</span></label>
                                     <div class="form-control-wrap">
                                         <select class="form-select" data-search="on" name="parent_category_id" id="parent_category_id">
                                             <option value="0">Thư mục gốc</option>

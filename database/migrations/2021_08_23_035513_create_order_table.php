@@ -17,6 +17,8 @@ class CreateOrderTable extends Migration
             $table->bigIncrements('id');
             $table->softDeletes();
             $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('product_id');
+            $table->unsignedBigInteger('trans_id');
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users');
         });

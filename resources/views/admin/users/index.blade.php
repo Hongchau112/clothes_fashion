@@ -1,30 +1,13 @@
 @extends('admin.users.layout', [
-'title' => ( $title ?? 'User lists' )
+'title' => ( $title ?? 'Quản lý tài khoản' )
 ])
 
 @section('content')
-    <div class="nk-block-head nk-block-head-sm">
-        <div class="nk-block-between">
-            <div class="nk-block-head-content">
-                <a href="{{ route('admin.create') }}" class="btn btn-primary">
-                    <em class="icon ni ni-plus"></em><span class="d-none d-md-block">Tạo tài khoản mới</span>
-                </a>
-            </div>
-{{--            <div class="nk-block-head-content">--}}
-{{--                <div class="toggle-wrap nk-block-tools-toggle">--}}
-{{--                    <a href="#" class="btn btn-icon btn-trigger toggle-expand mr-n1" data-target="pageMenu"><em class="icon ni ni-menu-alt-r"></em></a>--}}
-{{--                    <div class="toggle-expand-content" data-content="pageMenu">--}}
-{{--                        <div class="nk-block-head-content">--}}
-{{--                            <a href="{{ route('admin.create') }}" class="btn btn-primary">--}}
-{{--                                <em class="icon ni ni-plus"></em><span class="d-none d-md-block">Tạo tài khoản mới</span>--}}
-{{--                            </a>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                </div><!-- .toggle-wrap -->--}}
-{{--            </div><!-- .nk-block-head-content -->--}}
-        </div><!-- .nk-block-between -->
-    </div>
-
+    @if (session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
 
     <div class="card-inner p-0">
         <div class="nk-tb-list nk-tb-ulist">
@@ -35,9 +18,9 @@
                         <label class="custom-control-label" for="uid"></label>
                     </div>
                 </div>
-                <div class="nk-tb-col"><span class="sub-text">User</span></div>
+                <div class="nk-tb-col"><span class="sub-text">Tên người dùng</span></div>
                 <div class="nk-tb-col tb-col-lg"><span class="sub-text">Email</span></div>
-                <div class="nk-tb-col tb-col-md"><span class="sub-text">Status</span></div>
+                <div class="nk-tb-col tb-col-md"><span class="sub-text">Trạng thái</span></div>
                 <div class="nk-tb-col nk-tb-col-tools">
                     <ul class="nk-tb-actions gx-1 my-n1">
                         <li class="mr-n1">
@@ -54,28 +37,28 @@
                     </ul>
                 </div>
             </div>
-            @foreach($userList as $user)
+            @foreach($userList as $user_sub)
                 <div class="nk-tb-item">
                     <div class="nk-tb-col nk-tb-col-check">
                         <div class="custom-control custom-control-sm custom-checkbox notext">
-                            <input type="checkbox" class="custom-control-input" id="uid{{$user->id}}">
-                            <label class="custom-control-label" for="uid{{$user->id}}"></label>
+                            <input type="checkbox" class="custom-control-input" id="uid{{$user_sub->id}}">
+                            <label class="custom-control-label" for="uid{{$user_sub->id}}"></label>
                         </div>
                     </div>
                     <div class="nk-tb-col">
                         <div class="user-card">
                             <div class="user-info">
-                                <span class="tb-lead">{{$user->name}}<span class="dot dot-success d-md-none ml-1"></span></span>
+                                <span class="tb-lead">{{$user_sub->name}}<span class="dot dot-success d-md-none ml-1"></span></span>
                             </div>
                         </div>
                     </div>
                     <div class="nk-tb-col tb-col-lg">
                         <ul class="list-status">
-                            <li><em class="icon text-success ni ni-check-circle"></em> <span>{{$user->email}}</span></li>
+                            <li><em class="icon text-success ni ni-check-circle"></em> <span>{{$user_sub->email}}</span></li>
                         </ul>
                     </div>
                     <div class="nk-tb-col tb-col-md">
-                        @if ($user->status == 1)
+                        @if ($user_sub->status == 1)
                             <span class="tb-status text-success">Active</span>
                         @else
                             <span class="tb-status text-danger">Locked</span>
@@ -88,10 +71,10 @@
                                     <a href="#" class="dropdown-toggle btn btn-icon btn-trigger" data-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
                                     <div class="dropdown-menu dropdown-menu-right">
                                         <ul class="link-list-opt no-bdr">
-                                            <li><a href="{{ route('admin.show', ['id' => $user->id]) }}"><em class="icon ni ni-eye"></em><span>View</span></a></li>
-                                            <li><a href="{{ route('admin.edit', ['id' => $user->id]) }}"><em class="icon ni ni-edit"></em><span>Edit</span></a></li>
+                                            <li><a href="{{ route('admin.show', ['id' => $user_sub->id]) }}"><em class="icon ni ni-eye"></em><span>View</span></a></li>
+                                            <li><a href="{{ route('admin.edit', ['id' => $user_sub->id]) }}"><em class="icon ni ni-edit"></em><span>Edit</span></a></li>
                                             <li><a href="#"><em class="icon ni ni-repeat"></em><span>Change password</span></a></li>
-                                            <li><a href="{{ route('admin.block', ['id' => $user->id]) }}"><em class="icon ni ni-na"></em><span>Block</span></a></li>
+                                            <li><a href="{{ route('admin.block', ['id' => $user_sub->id]) }}"><em class="icon ni ni-na"></em><span>Block</span></a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -101,5 +84,21 @@
                 </div><!-- .nk-tb-item -->
             @endforeach
         </div><!-- .nk-tb-list -->
+        <div class="card-inner">
+            <div class="nk-block-between-md g-3">
+                <div class="g">
+{{--                    <div class="card-inner" id="card-inner-id">--}}
+{{--                        <div class="nk-block-between-md g-3">--}}
+{{--                            <div class="g">--}}
+{{--                                {!!$products->links('pagination::bootstrap-4')!!}--}}
+{{--                            </div>--}}
+{{--                        </div><!-- .nk-block-between -->--}}
+{{--                    </div>--}}
+                    <ul class="pagination justify-content-center justify-content-md-start">
+                        {!!$userList->links('pagination::bootstrap-4')!!}
+                    </ul><!-- .pagination -->
+                </div>
+            </div><!-- .nk-block-between -->
+        </div><!-- .card-inner -->
     </div>
 @endsection

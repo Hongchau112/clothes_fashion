@@ -11,13 +11,13 @@
                 </a>
             </div><!-- .nk-header-brand -->
             <div class="nk-header-news d-none d-xl-block">
-{{--                <div class="nk-news-list">--}}
-{{--                    <a class="nk-news-item" href="#">--}}
-{{--                        <div class="nk-news-icon">--}}
-{{--                            <em class="icon ni ni-card-view"></em>--}}
-{{--                        </div>--}}
-{{--                    </a>--}}
-{{--                </div>--}}
+                <div class="nk-news-list">
+                    <a class="nk-news-item" href="#">
+                        <div class="nk-news-icon">
+                            <em class="icon ni ni-card-view"></em>
+                        </div>
+                    </a>
+                </div>
             </div><!-- .nk-header-news -->
             <div class="nk-header-tools">
                 <ul class="nk-quick-nav">
@@ -47,7 +47,7 @@
                             </div>
                             <div class="dropdown-inner">
                                 <ul class="link-list">
-                                    <li><a href="html/user-profile-regular.html"><em class="icon ni ni-user-alt"></em><span>View Profile</span></a></li>
+                                    <li><a href="{{route('admin.show', ['id' => $user->id])}}"><em class="icon ni ni-user-alt"></em><span>View Profile</span></a></li>
                                     <li><a href="html/user-profile-setting.html"><em class="icon ni ni-setting-alt"></em><span>Account Setting</span></a></li>
                                     <li><a href="html/user-profile-activity.html"><em class="icon ni ni-activity-alt"></em><span>Login Activity</span></a></li>
                                     <li><a class="dark-switch" href="#"><em class="icon ni ni-moon"></em><span>Dark Mode</span></a></li>

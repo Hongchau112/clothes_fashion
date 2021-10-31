@@ -13179,7 +13179,7 @@ p > span > .icon.ni { vertical-align: middle; }
 
 .invoice-desc ul span { font-size: 13px; font-weight: 500; color: #526484; }
 
-.invoice-desc ul span:first-child { min-width: 90px; display: inline-block; text-transform: uppercase; letter-spacing: 1px; color: #8094ae; }
+.invoice-desc ul span:first-child { min-width: 120px; display: inline-block; text-transform: uppercase; letter-spacing: 1px; color: #8094ae; }
 
 .invoice-desc ul span:last-child { padding-left: 0.75rem; }
 

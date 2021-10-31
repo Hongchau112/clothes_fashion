@@ -10,7 +10,7 @@
                 <div class="row g-gs">
                     <div class="col-lg-12">
                         <div class="card-inner card-inner-sm">
-                            <form action="/product_categories/update/{{$product_category->id}}" method="POST">
+                            <form action="/admin/product_categories/update/{{$product_category->id}}" method="POST">
                                 @csrf
                                 @method('PATCH')
                                 <div class="form-group">

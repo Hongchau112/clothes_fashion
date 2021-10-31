@@ -9,9 +9,10 @@ use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
 {
-    public function loginPost(Request $request){
+    public function login(Request $request){
         $credentials = $request->only('name', 'password');
         $user = Admin::where('name', $request->name)->first();
+//        dd($user->id);
         if (Auth::guard('admin')->attempt($credentials)) {
             if ($user->status == 0)
             {
@@ -28,7 +29,7 @@ class AdminController extends Controller
     public function index()
     {
         $user = Auth::guard('admin')->user();
-        $userList = Admin::all();
+        $userList = Admin::paginate(10);
         return view('admin.users.index', compact('user'), compact('userList'));
     }
 
@@ -40,7 +41,6 @@ class AdminController extends Controller
 
     public function store(Request $request)
     {
-        $user = Auth::guard('admin')->user();
         $validated_data = $request->validate([
             'name' => 'required',
             'email' => 'required|email|unique:admins',
@@ -65,15 +65,15 @@ class AdminController extends Controller
         $user = Auth::guard('admin')->user();
         $userList = Admin::all();
         $user_show = Admin::find($id);
-        return view('admin.users.show', ['user' => $user_show]);
+        return view('admin.users.show', compact('user', 'user_show', 'userList'));
     }
 
     public function edit($id)
     {
         $user = Auth::guard('admin')->user();
         $user_list = Admin::all();
-        $user = Admin::find($id);
-        return view('admin.users.edit', ['user' => $user]);
+        $user_edit = Admin::find($id);
+        return view('admin.users.edit', compact('user', 'user_edit', 'user_list'));
     }
 
     public function update(Request $request, $id)
@@ -133,6 +133,18 @@ class AdminController extends Controller
             }
         $user_lock->save();
         return view('admin.users.index', compact('user'), compact('userList'));
+    }
+
+    function check_mail(Request $request){
+         echo $request->get('email');
+        if($request->get('email')){
+            $email_check = $request->get('email');
+            $data = Admin::where('email', $email_check)->count();
+            if($data > 0){
+                echo 'exist';
+            }
+
+        }
     }
 
 }

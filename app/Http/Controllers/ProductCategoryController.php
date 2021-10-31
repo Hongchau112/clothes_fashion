@@ -14,7 +14,7 @@ class ProductCategoryController extends Controller
     public function index()
     {
         $user = Auth::guard('admin')->user();
-        $product_category = ProductCategory::all();
+        $product_category = ProductCategory::paginate(10);
         return view('admin.product_categories.index', compact('user','product_category'));
     }
 
@@ -40,7 +40,7 @@ class ProductCategoryController extends Controller
         $product_category->parent_category_id = $validated_data['parent_category_id'];
         $product_category->save();
 
-        return redirect()->route('product_categories.index')->with('success', 'thêm thành công!');
+        return redirect()->route('admin.product_categories.index')->with('success', 'Thêm danh mục thành công!');
     }
 
     public function edit($id)
@@ -66,13 +66,13 @@ class ProductCategoryController extends Controller
         $product_category->parent_category_id = $validated_data['parent_category_id'];
         $product_category->save();
 
-        return redirect()->route('product_categories.index')->with('success', 'Sửa thành công!');
+        return redirect()->route('admin.product_categories.index')->with('success', 'Sửa danh mục thành công!');
     }
 
     public function delete($id)
     {
         ProductCategory::where('id', $id)->delete();
-        return redirect()->route('product_categories.index')->with('success', 'Xóa thành công!');
+        return redirect()->route('admin.product_categories.index')->with('success', 'Xóa danh mục thành công!');
     }
 
 }
