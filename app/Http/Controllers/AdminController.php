@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-
+use App\Http\Controllers\Rule;
 class AdminController extends Controller
 {
     public function login(Request $request){
@@ -29,8 +29,8 @@ class AdminController extends Controller
     public function index()
     {
         $user = Auth::guard('admin')->user();
-        $userList = Admin::paginate(10);
-        return view('admin.users.index', compact('user'), compact('userList'));
+        $user_list = Admin::paginate(10);
+        return view('admin.users.index', compact('user_list', 'user'));
     }
 
     public function create()
@@ -82,7 +82,8 @@ class AdminController extends Controller
         {
             $validated_data = $request->validate([
                 'name' => 'required',
-                'email' => 'required|email|unique:admins',
+//                'email' => 'required|email|exists:admins,email,'.$id,
+                'email' => 'required', 'string', 'email', 'max:255', \Illuminate\Validation\Rule::unique('users')->ignore($id),
                 'phone' => 'nullable'
             ]);
 
@@ -100,39 +101,51 @@ class AdminController extends Controller
         Auth::guard('admin')->logout();
         return redirect('admin/login');
     }
-    public function changePassword(Request $request) {
+
+    public function edit_password($id)
+    {
         $user = Auth::guard('admin')->user();
-        $userPassword = $user->password; //pass cũ
+        $user_list = Admin::all();
+        $user_edit = Admin::find($id);
+        return view('admin.users.password', compact('user', 'user_edit', 'user_list'));
+    }
+
+    public function change_password(Request $request) {
+        $user = Auth::guard('admin')->user();
+        $user_password_old = $user->password; //mật khẩu cũ
 
         $request->validate([
             'password' => 'required',
-            'newPassword' => 'required|same:password_confirm|min:6',
-            'password_confirm' => 'required',
+            'set_new_password' => 'required|same:password_confirmation|min:6',
+            'password_confirmation' => 'required',
 
         ]);
-        if(!Hash::check($request->password,$userPassword)){
-            return back()->withErrors(['current_password'=>'password not match']);
+        if(!Hash::check($request->password,$user_password_old)){
+            return back()->withErrors(['current_password'=>'Nhập sai mật khẩu hiện tại, vui lòng nhập lại!']);
         }
 
-        $user->password = Hash::make($request->newPassword);
+        $user->password = Hash::make($request->new_password);
         $user->save();
-        return redirect()->route('admin.user.show', ['user' => $user])->with('success', 'Thay đổi password thành công!');
+        return redirect()->route('admin.index', ['user' => $user])->with('success', 'Thay đổi mật khẩu thành công!');
     }
     public function block($id)
     {
         $user = Auth::guard('admin')->user();
-        $userList = Admin::all();
+        $user_list = Admin::all();
         $user_lock = Admin::find($id);
 
         if ($user_lock->status == 0)
         {
             $user_lock->status = 1;
+            $user_lock->save();
+            return redirect()->route('admin.index', ['user' => $user])->with('success', 'Gỡ block thành công!');
         }else
             {
                 $user_lock->status = 0;
+                $user_lock->save();
+                return redirect()->route('admin.index', ['user' => $user])->with('success', 'Block thành công!');
             }
-        $user_lock->save();
-        return view('admin.users.index', compact('user'), compact('userList'));
+
     }
 
     function check_mail(Request $request){

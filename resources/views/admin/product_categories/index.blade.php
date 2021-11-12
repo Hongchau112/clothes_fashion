@@ -98,7 +98,6 @@
                                                         <div class="dropdown-menu dropdown-menu-right">
                                                             <ul class="link-list-opt no-bdr">
                                                                 <li><a href="{{route('admin.product_categories.edit', ['id' => $cate->id])}}"><em class="icon ni ni-edit"></em><span>Sửa</span></a></li>
-                                                                <li><a href="#"><em class="icon ni ni-eye"></em><span>Xem</span></a></li>
                                                                 <li><a href="{{route('admin.product_categories.delete', ['id' => $cate->id])}}"><em class="icon ni ni-trash"></em><span>Xóa</span></a></li>
                                                             </ul>
                                                         </div>

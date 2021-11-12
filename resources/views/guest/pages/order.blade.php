@@ -2,7 +2,10 @@
     'title' => ($title ?? 'Đặt hàng')
 ])
 <style>
-    <link rel="stylesheet" href="{{asset('mystore/css/order.css')}}"></link>
+    #submit-search{
+        padding: 9px 17px !important;
+    }
+    <link rel="stylesheet" href="{{asset('mystore/css/order.css')}}">
 </style>
 @section('content')
     <div class="order-cart">

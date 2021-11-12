@@ -37,7 +37,7 @@
                     </ul>
                 </div>
             </div>
-            @foreach($userList as $user_sub)
+            @foreach($user_list as $user_sub)
                 <div class="nk-tb-item">
                     <div class="nk-tb-col nk-tb-col-check">
                         <div class="custom-control custom-control-sm custom-checkbox notext">
@@ -71,10 +71,10 @@
                                     <a href="#" class="dropdown-toggle btn btn-icon btn-trigger" data-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
                                     <div class="dropdown-menu dropdown-menu-right">
                                         <ul class="link-list-opt no-bdr">
-                                            <li><a href="{{ route('admin.show', ['id' => $user_sub->id]) }}"><em class="icon ni ni-eye"></em><span>View</span></a></li>
-                                            <li><a href="{{ route('admin.edit', ['id' => $user_sub->id]) }}"><em class="icon ni ni-edit"></em><span>Edit</span></a></li>
-                                            <li><a href="#"><em class="icon ni ni-repeat"></em><span>Change password</span></a></li>
-                                            <li><a href="{{ route('admin.block', ['id' => $user_sub->id]) }}"><em class="icon ni ni-na"></em><span>Block</span></a></li>
+                                            <li><a href="{{ route('admin.show', ['id' => $user_sub->id]) }}"><em class="icon ni ni-eye"></em><span>Xem</span></a></li>
+                                            <li><a href="{{ route('admin.edit', ['id' => $user_sub->id]) }}"><em class="icon ni ni-edit"></em><span>Chỉnh sửa</span></a></li>
+                                            <li><a href="{{ route('admin.edit_password', ['id' => $user_sub->id]) }}"><em class="icon ni ni-repeat"></em><span>Đổi mật khẩu</span></a></li>
+                                            <li><a href="{{ route('admin.block', ['id' => $user_sub->id]) }}"><em class="icon ni ni-na"></em><span>Chặn</span></a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -95,7 +95,7 @@
 {{--                        </div><!-- .nk-block-between -->--}}
 {{--                    </div>--}}
                     <ul class="pagination justify-content-center justify-content-md-start">
-                        {!!$userList->links('pagination::bootstrap-4')!!}
+                        {!!$user_list->links('pagination::bootstrap-4')!!}
                     </ul><!-- .pagination -->
                 </div>
             </div><!-- .nk-block-between -->

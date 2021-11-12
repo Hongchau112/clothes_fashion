@@ -17,7 +17,7 @@
 
     .topnav .search-container button {
         float: right;
-        padding: 6px 10px;
+        /*padding: 6px 10px;*/
         margin-top: 8px;
         margin-right: 16px;
         background: #ddd;
@@ -27,9 +27,9 @@
     }
 
     #submit-search {
-        font-size: 12px;!important;
-        padding: 6px 17px;!important;
-        background-color: #fdd5ab;!important;
+        font-size: 12px !important;
+        padding: 6px 17px ;
+        background-color: #fdd5ab !important;
     }
     .fa fa-search {
         font-size: 14px;
@@ -116,7 +116,7 @@
                     <div class="search-container">
                         <form action="{{route('guest.search')}}" method="GET">
                             <input type="text" placeholder="Search.." name="key_search">
-                            <button type="submit" id="submit-search"><i class="fa fa-search"></i></button>
+                            <button type="submit" id="submit-search" ><i class="fa fa-search"></i></button>
                         </form>
                     </div>
                 </div>

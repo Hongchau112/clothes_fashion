@@ -38,6 +38,8 @@ Route::middleware(['admin'])->name('admin.')->group(function () {
     Route::get('admin/edit/{id}', [AdminController::class, 'edit'])->name('edit');
     Route::patch('admin/update/{id}', [AdminController::class, 'update'])->name('update');
     Route::get('admin/block/{id}', [AdminController::class, 'block'])->name('block');
+    Route::get('admin/edit_password/{id}', [AdminController::class, 'edit_password'])->name('edit_password');
+    Route::post('admin/change_password/{id}', [AdminController::class, 'change_password'])->name('change_password');
 
     //product categories
     Route::get('admin/product_categories', [ProductCategoryController::class, 'index'])->name('product_categories.index');

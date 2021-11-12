@@ -10,7 +10,7 @@
                     <div class="col-lg-6">
                         @foreach($images as $image)
                             @if($image->product_id == $product->id)
-                                <img class="product-images" rc="{{asset('/'.$image->image_path)}}" alt="product_image" height="300" style="padding-bottom: 20px">
+                                <img class="product-images" src="{{asset('/'.$image->image_path)}}" alt="product_image" height="300" style="padding-bottom: 20px">
                             @endif
                         @endforeach
 

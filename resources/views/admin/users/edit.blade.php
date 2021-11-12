@@ -1,5 +1,5 @@
 @extends('admin.users.layout', [
-    'title' => ( $title ?? 'Quản lý tài khoản' )
+    'title' => ( $title ?? 'Chỉnh sửa thông tin' )
 ])
 
 @section('content')
