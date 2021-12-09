@@ -79,7 +79,7 @@
                                 <div class="proceed-checkout">
                                     <ul>
                                         <li class="subtotal">Tổng số lượng <span>{{Session::get('cart')->total_quanty}}</span></li>
-                                        <li class="cart-total">Tổng tiền <span>{{number_format(Session::get('cart')->total_price)}}</span></li>
+                                        <li class="cart-total">Tổng tiền <span>{{number_format(Session::get('cart')->total_price)}} vnd</span></li>
                                         <input type="hidden" id="total-quanty-cart" value="{{Session::get('cart')->total_quanty}}">
                                     </ul>
                                     <a href="{{route('guest.order')}}" class="proceed-btn">Xử lý đặt hàng</a>
@@ -135,6 +135,7 @@
                     success: function(result){
                         $('#shopping-cart').empty();
                         $('#shopping-cart').html(result);
+                        window.location.reload(true);
                         $('#cart').text($('#total-quanty-cart').val())
                     }
                 });

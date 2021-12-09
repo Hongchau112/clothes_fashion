@@ -6,7 +6,9 @@ use App\Models\Image;
 use App\Models\Product;
 use App\Models\ProductCategory;
 use App\Models\ProductPrice;
+use App\Models\Size;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PageController extends Controller
 {
@@ -33,7 +35,8 @@ class PageController extends Controller
         $categories = ProductCategory::all();
         $product_price = ProductPrice::all();
         $images = Image::where('product_id', $id)->get();
-        return view('guest.pages.detail', compact('product','categories', 'product_price', 'images'));
+        $sizes = Size::all();
+        return view('guest.pages.detail', compact('product','categories', 'product_price', 'images', 'sizes'));
     }
 
     public function get_price(Request $request)
@@ -60,10 +63,24 @@ class PageController extends Controller
         }
     }
 
-    public function checkout()
+    public function show_category($id)
     {
+        $product_selected = DB::select(
+            'SELECT * FROM products WHERE products.product_type_id IN
+            (SELECT type.id FROM product_types as type WHERE (type.parent_category_id = ? ) OR (type.id=?))',[$id, $id]);
+
+        for($i = 0 ; $i <count($product_selected);$i++){
+            $product_selected[$i] = [$product_selected[$i]->id];
+            // dd($test);
+        }
+
+        $products = Product::whereIn('id',$product_selected)->paginate(8);
+
+        $category = ProductCategory::find($id);
         $categories = ProductCategory::all();
-        return view('guest.pages.order', compact('categories'));
+        $images = Image::all();
+        return view(
+            'guest.pages.index', compact('products', 'product_selected', 'categories', 'images'));
     }
 
     public function search(Request $request)

@@ -56,16 +56,14 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="form-label" for="">Add Price</label>
+                                    <label class="form-label" for="">Thêm giá</label>
                                     <table class="" id="dynamicAddRemove">
                                         <tr>
                                             <td><input type="text" name="color[0]" placeholder="Enter color" class="form-control" />
                                             </td>
-                                            <td><input type="text" name="size[0]" placeholder="Enter size" class="form-control" />
-                                            </td>
                                             <td><input type="text" name="price[0]" placeholder="Enter price" class="form-control" />
                                             </td>
-                                            <td><button type="button" name="add" id="dynamic-ar" class="btn btn-outline-primary">Add Price</button></td>
+                                            <td><button type="button" name="add" id="dynamic-ar" class="btn btn-outline-primary">Thêm</button></td>
                                         </tr>
                                     </table>
                                 </div>
@@ -77,7 +75,7 @@
                                     {{--                                    </div>--}}
                                     <div class="col-lg-6 col-md-8 text-right">
                                         <div class="form-group mt-1 ">
-                                            <button type="submit" class="btn btn-primary">Tạo danh mục</button>
+                                            <button type="submit" class="btn btn-primary">Thêm sản phẩm</button>
                                         </div>
                                     </div>
                                 </div>
@@ -99,8 +97,7 @@
         $("#dynamic-ar").click(function () {
             ++i;
             $("#dynamicAddRemove").append('<tr><td><input type="text" name="color[' + i +
-                ']" placeholder="Enter color" class="form-control" /></td><td><input type="text" name="size[' + i +
-                ']" placeholder="Enter size" class="form-control" /></td> <td><input type="text" name="price['+ i +
+                ']" placeholder="Enter color" class="form-control" /></td> <td><input type="text" name="price['+ i +
                 ']" placeholder="Enter price" class="form-control" /></td><td><button type="button" class="btn btn-outline-danger remove-input-field">Delete</button></td></tr>'
             );
         });

@@ -16,9 +16,9 @@ class Product extends Model
         'product_type_id'
     ];
 
-    public function size() {
-        return $this->belongsToMany('App\Models\Size','product_prices','product_id','size_id')->withPivot('price', 'price_id')->as('product_prices');
-    }
+//    public function size() {
+//        return $this->belongsToMany('App\Models\Size','product_prices','product_id','size_id')->withPivot('price', 'price_id')->as('product_prices');
+//    }
 
     public function color() {
         return $this->belongsToMany('App\Models\Color','product_prices','product_id','color_id')->withPivot('price', 'price_id')->as('product_prices');

@@ -829,3 +829,7 @@ input::-webkit-inner-spin-button {
     font-weight: bold;
 }
 
+.cart-error {
+    color: #e81616;
+    font-weight: bold;
+}

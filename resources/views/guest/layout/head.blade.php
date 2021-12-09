@@ -27,5 +27,5 @@
 
     <link rel="stylesheet" href="{{asset('cart/css/style.css')}}" type="text/css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/AlertifyJS/1.13.1/css/alertify.min.css">
-
+{{--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/AlertifyJS/1.13.1/css/alertify.min.css">--}}
 </head>

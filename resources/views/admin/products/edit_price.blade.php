@@ -21,11 +21,6 @@
                                     @endforeach
                                     {{--                                    Goi danh sách size ra để so sánh rồi lấy tên màu--}}
 
-                                @foreach($sizes as $size)
-                                        @if ($price->size_id == $size->id)
-                                            <td><input type="text" name="size[0]" placeholder="Enter size" class="form-control"  value="{{$size->name}}" /></td>
-                                        @endif
-                                    @endforeach
                                     <td><input type="text" name="price[0]" placeholder="Enter price" class="form-control" value="{{$price->price}}"/></td>
                                 </tr>
                             @endforeach
@@ -56,8 +51,7 @@
         $("#dynamic-ar").click(function () {
             ++i;
             $("#dynamicAddRemove").append('<tr><td><input type="text" name="color[' + i +
-                ']" placeholder="Enter color" class="form-control" /></td><td><input type="text" name="size[' + i +
-                ']" placeholder="Enter size" class="form-control" /></td> <td><input type="text" name="price['+ i +
+                ']" placeholder="Enter color" class="form-control" /></td> <td><input type="text" name="price['+ i +
                 ']" placeholder="Enter price" class="form-control" /></td><td><button type="button" class="btn btn-outline-danger remove-input-field">Delete</button></td></tr>'
             );
         });

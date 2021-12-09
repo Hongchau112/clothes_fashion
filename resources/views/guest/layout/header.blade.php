@@ -74,7 +74,7 @@
                     @endphp
 
                     @foreach($categories as $i => $cate)
-                        @if($cate->parent_category_id==0)
+                        @if($cate->parent_category_id == 0)
                             @php
                                 $count=$count+1;
                             @endphp
@@ -94,15 +94,15 @@
                                         @endif
                                     @endforeach
                                     @if($flag==1)
-                                        <a class="nav-link dropdown-toggle"  href="">{{$cate->name}}</a>
+                                        <a class="nav-link dropdown-toggle"  href="{{route('guest.show_category', ['id'=> $cate->id])}}">{{$cate->name}}</a>
 
                                     @else
-                                        <a class="nav-link" href="">{{$cate->name}}</a>
+                                        <a class="nav-link" href="{{route('guest.show_category', ['id'=> $cate->id])}}">{{$cate->name}}</a>
                                     @endif
                                     <div class="dropdown-menu" style="padding: 0px; ">
                                         @foreach($categories as $cate2)
                                             @if($cate2->parent_category_id==$cate->id)
-                                                <a class="nav-link" href="">{{$cate2->name}}</a>
+                                                <a class="nav-link" href="{{route('guest.show_category', ['id'=> $cate2->id])}}">{{$cate2->name}}</a>
                                             @endif
                                         @endforeach
                                     </div>

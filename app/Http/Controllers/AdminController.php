@@ -16,12 +16,12 @@ class AdminController extends Controller
         if (Auth::guard('admin')->attempt($credentials)) {
             if ($user->status == 0)
             {
-                return view('admin.login');
+                return view('admin.users.login');
             }else{
                 return redirect()->route('admin.index');
             }
         }else{
-            return view('admin.login');
+            return view('admin.users.login');
         }
 
     }

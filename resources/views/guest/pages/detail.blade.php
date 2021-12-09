@@ -29,7 +29,7 @@
                             <h3 class="product-info-name" >{{ $product->name }}</h3>
                             @foreach ($product->color as $i => $color)
                                 @if ($i == 0)
-                                    <p class="product-info-price" id="price">{{$color->product_prices->price }} </p>
+                                    <p class="product-info-price" id="price">{{number_format($color->product_prices->price)}} VND </p>
                                     <input type="hidden" id="get_price" value="{{$color->product_prices->price}}">
                                     <input type="hidden" id="get_price_id"  value="{{$color->product_prices->price_id}}">
 {{--                                    <input type="hidden" id="total-quanty" value="{{$color->product_prices->price_id}}">--}}
@@ -59,23 +59,12 @@
                                         <label class="custom-control-label" for="colorCheck{{ $i }}">
                                             {{ $color->name }}</label>
                                     </label>
-{{--                                    <li>--}}
-{{--                                        <div class="custom-control custom-radio  checked">--}}
-{{--                                            <input type="button" name="color" class="btn btn-outline-danger" @if ($i == 0) checked--}}
-{{--                                                   @endif--}}
-{{--                                                   value="{{ $color->name }}" id="colorCheck{{ $i }}">--}}
-{{--                                            <input type="hidden" id="product_id" value="{{ $product->id }}">--}}
-{{--                                            <label class="custom-control-label" for="colorCheck{{ $i }}">--}}
-{{--                                                {{ $color->name }}</label>--}}
-{{--                                        </div>--}}
-{{--                                    </li>--}}
-
                                 @endforeach
                             </ul>
                             <!-- Size-->
                             <h6 class="text-muted">Size</h6>
                             <ul class="custom-control-group">
-                                @foreach ($product->size as $i => $size)
+                                @foreach ($sizes as $i => $size)
                                     <div class="custom-control custom-radio custom-control-inline">
                                         <input type="radio" name="size" class="custom-control-input" @if ($i == 0) checked
                                                @endif

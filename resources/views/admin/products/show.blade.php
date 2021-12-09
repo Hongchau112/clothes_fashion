@@ -50,7 +50,7 @@
                             <div class="product-meta">
                                 <h6 class="title">Size</h6>
                                 <ul class="custom-control-group">
-                                    @foreach($product->size as $size)
+                                    @foreach($sizes as $size)
                                         <li>
                                             <div class="custom-control custom-radio custom-control-pro no-control checked">
                                                 <input type="radio" class="custom-control-input" name="sizeCheck" id="sizeCheck1">

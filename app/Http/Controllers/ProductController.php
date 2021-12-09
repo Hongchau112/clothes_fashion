@@ -40,13 +40,13 @@ class ProductController extends Controller
             'product_type_id' => 'required',
             'color' => 'required',
             'price' => 'required',
-            'size' => 'required',
+//            'size' => 'required',
             'file' => 'required'
         ]);
 
         $color = $data['color'];
         $price = $data['price'];
-        $size = $data['size'];
+//        $size = $data['size'];
         $product = new Product();
         $product->name = $data['name'];
         $product->description = $data['description'];
@@ -83,31 +83,31 @@ class ProductController extends Controller
             }
         }
 
-        for ($i = 0; $i < count($size); $i++) {
-            //Luu mau
-            $id = Size::where('name', $size[$i])->first();
-            if (!isset($id)){
-                $product_size = new Size();
-                $product_size->name = $size[$i];
-//                $productColor->product_id = $insertedId;
-                $product_size->save();
-                $id = $product_size->id;
-            }
-        }
+//        for ($i = 0; $i < count($size); $i++) {
+//            //Luu mau
+//            $id = Size::where('name', $size[$i])->first();
+//            if (!isset($id)){
+//                $product_size = new Size();
+//                $product_size->name = $size[$i];
+////                $productColor->product_id = $insertedId;
+//                $product_size->save();
+//                $id = $product_size->id;
+//            }
+//        }
 
-        for ($i = 0; $i < count($size); $i++) {
+        for ($i = 0; $i < count($color); $i++) {
             //Luu mau
-            $id_size = Size::where('name', $size[$i])->first()->id;
+//            $id_size = Size::where('name', $color[$i])->first()->id;
             $id_color = Color::where('name', $color[$i])->first()->id;
             $add_color[$i] = [
                 'price' => $price[$i],
                 'product_id' => $insertedId,
                 'color_id' => $id_color,
-                'size_id' => $id_size,
+//                'size_id' => $id_size,
                 'date_apply' => now()
             ];
         }
-        $product->size()->attach($add_color);
+        $product->color()->attach($add_color);
 
         return redirect()->route('admin.products.index', ['products'])->with('success', 'Add product  success');
     }
@@ -119,8 +119,9 @@ class ProductController extends Controller
         $product = Product::find($id);
         $price = ProductPrice::where('product_id', $id)->get();
         $images = Image::all();
+        $sizes = Size::all();
 
-        return view('admin.products.show', compact('user', 'categories', 'product', 'price', 'images'));
+        return view('admin.products.show', compact('user', 'categories', 'product', 'price', 'images', 'sizes'));
     }
 
     public function edit($id)
@@ -154,7 +155,7 @@ class ProductController extends Controller
     public function delete($id)
     {
         $product = Product::find($id);
-        $product->size()->detach();
+        $product->color()->detach();
 //        $product->color()->detach();
         Product::where('id', $id)->delete();
         return redirect()->route('admin.products.index')->with('success', 'Xóa sản phẩm thành công!');
@@ -165,21 +166,18 @@ class ProductController extends Controller
         $user = Auth::guard('admin')->user();
         $product = Product::find($id);
         $prices = ProductPrice::where('product_id', $id)->get();
-        $sizes = Size::all();
         $colors = Color::all();
-        return view('admin.products.edit_price',compact('user','product', 'prices', 'sizes', 'colors'));
+        return view('admin.products.edit_price',compact('user','product', 'prices', 'colors'));
 
     }
 
     public function update_price($id,Request $request)
     {
         $data = $request->validate([
-            'size' => 'required',
             'color' => 'required',
             'price' => 'required'
 
         ]);
-        $size = $data['size'];
         $color = $data['color'];
         $price = $data['price'];
 //        dd($price[0]);
@@ -197,35 +195,44 @@ class ProductController extends Controller
             }
         }
 
-        $product=Product::find($id);
+        $product = Product::find($id);
 
-        for ($i = 0; $i < count($size); $i++) {
+        for ($i = 0; $i < count($color); $i++) {
             //Luu mau
-            $id_price = Size::where('name', $size[$i])->first();
-            if (!isset($id_price)){
-                $product_size = new Size();
-                $product_size->name = $size[$i];
-                $product_size->save();
-                $id_price = $product_size->id;
-            }
-        }
-
-        for ($i = 0; $i < count($size); $i++) {
-            //Luu mau
-            $id_size = Size::where('name', $size[$i])->first()->id;
             $id_color = Color::where('name', $color[$i])->first()->id;
             $add_color[$i] = [
                 'price' => $price[$i],
                 'product_id' => $product->id,
                 'color_id' => $id_color,
-                'size_id' => $id_size,
                 'date_apply' => now()
             ];
         }
 
-        $product->size()->sync($add_color);
         $product->color()->sync($add_color);
-        return redirect()->route('admin.products.index')->with('success','Updated');
+        return redirect()->route('admin.products.index')->with('success','Đã cập nhật lại giá sản phẩm thành công!');
+    }
+
+    public function add_size()
+    {
+        $user = Auth::guard('admin')->user();
+//        $product_category = ProductCategory::all();
+        return view('admin.products.size', compact('user'));
+    }
+
+    public function store_size(Request $request)
+    {
+        $user = Auth::guard('admin')->user();
+        $product_category = ProductCategory::all();
+        $products = Product::paginate(10);
+        $data = $request->validate([
+            'name' => 'required'
+            ]);
+        $size = new Size();
+        $size->name = $data['name'];
+        $size->save();
+
+        return redirect()->route('admin.products.index', compact('user', 'products', 'product_category'))->with('success', 'Thêm size thành công!');
+
     }
 
 

@@ -40,34 +40,18 @@
                         @foreach($orders as $order)
                             @if($trans->id == $order->trans_id)
                             <tr>
-                                <td>
-                                    {{$order->id}}
-                                </td>
                                 @foreach($product_prices as $product_price)
                                     @if($order->product_price_id == $product_price->price_id)
                                         @foreach($products as $product)
                                             @if($product->id == $product_price->product_id)
-                                    <td>
-                                            {{$product->name}}
-{{--                                        <!-- Dashlite - Conceptual App Dashboard - Regular License</td> -->--}}
-                                    </td>
+                                            <td>
+                                                    {{$product->name}}
+                                            </td>
                                             <td>
                                                 {{number_format($product_price->price)}} đ
                                             </td>
                                             <td>
-                                                @php
-                                                    $j = $product->size->count()-1;
-                                                @endphp
-                                                @if($product->size->count() > 1)
-                                                    @for($i=0; $i < $j; $i++)
-                                                        {{$product->size[$i]->name}},
-                                                    @endfor
-                                                    {{$product->size[$j]->name}}
-                                                @else
-                                                    @foreach($product->size as $size)
-                                                        {{$size->name}}
-                                                    @endforeach
-                                                @endif
+                                              {{$product_price->size}}
                                             </td>
 
                                             <td>

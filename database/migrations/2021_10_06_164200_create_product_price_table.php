@@ -18,10 +18,10 @@ class CreateProductPriceTable extends Migration
             $table->String('price');
             $table->date('date_apply');
             $table->unsignedBigInteger('color_id');
-            $table->unsignedBigInteger('size_id');
+//            $table->unsignedBigInteger('size_id');
             $table->unsignedBigInteger('product_id');
             $table->foreign('color_id')->references('id')->on('colors');
-            $table->foreign('size_id')->references('id')->on('sizes');
+//            $table->foreign('size_id')->references('id')->on('sizes');
             $table->foreign('product_id')->references('id')->on('products');
             $table->timestamps();
             $table->softDeletes();

@@ -36,7 +36,8 @@
                         </a>
                         <ul class="nk-menu-sub">
                             <li class="nk-menu-item">
-                                <a href="{{route('admin.products.index')}}" class="nk-menu-link"><span class="nk-menu-text">Product List</span></a>
+                                <a href="{{route('admin.products.index')}}" class="nk-menu-link"><span class="nk-menu-text">Danh sách</span></a>
+                                <a href="{{route('admin.products.add_size')}}" class="nk-menu-link"><span class="nk-menu-text">Thêm size</span></a>
                             </li>
                         </ul><!-- .nk-menu-sub -->
                     </li><!-- .nk-menu-item -->

@@ -55,6 +55,8 @@ Route::middleware(['admin'])->name('admin.')->group(function () {
     Route::post('admin/products/store', [ProductController::class, 'store'])->name('products.store');
     Route::get('admin/products/show/{id}', [ProductController::class, 'show'])->name('products.show');
     Route::get('admin/products/edit/{id}', [ProductController::class, 'edit'])->name('products.edit');
+    Route::get('admin/products/add_size', [ProductController::class, 'add_size'])->name('products.add_size');
+    Route::post('admin/products/store_size', [ProductController::class, 'store_size'])->name('products.store_size');
     Route::patch('admin/products/update/{id}', [ProductController::class, 'update'])->name('products.update');
     Route::get('admin/products/edit_price/{id}', [ProductController::class, 'edit_price'])->name('products.edit_price');
     Route::post('admin/products/update_price/{id}', [ProductController::class, 'update_price'])->name('products.update_price');
@@ -81,13 +83,11 @@ Route::get('guest/show_cart', [CartController::class, 'show_cart'])->name('guest
 Route::get('guest/delete_cart/{id}', [CartController::class, 'delete_cart'])->name('guest.delete_cart');
 Route::get('guest/update_cart/{id}', [CartController::class,'update_cart'])->name('guest.update_cart');
 
-
+Route::get('guest/show_category/{id}', [PageController::class,'show_category'])->name('guest.show_category');
 
 Route::get('guest/order', [CartController::class,'order'])->name('guest.order');
-
-Route::get('guest/checkout', [PageController::class,'checkout'])->name('guest.checkout');
 Route::get('guest/success', [TransactionController::class,'success'])->name('guest.success');
-Route::post('guest/checkout/store', [TransactionController::class, 'store'])->name('guest.transaction.store');
+Route::post('guest/order/store', [TransactionController::class, 'store'])->name('guest.transaction.store');
 //Route::middleware(['guest'])->name('guest.')->group(function () {
 //    Route::get('guest/index', [PageController::class, 'index'])->name('index');
 //});

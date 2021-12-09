@@ -8,9 +8,11 @@ use App\Models\Order;
 use App\Models\Product;
 use App\Models\ProductCategory;
 use App\Models\ProductPrice;
+use App\Models\Size;
 use App\Models\Transaction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use phpDocumentor\Reflection\Types\Nullable;
 
 class TransactionController extends Controller
 {
@@ -32,15 +34,17 @@ class TransactionController extends Controller
 
     public function store(Request $request){
         $products = Product::all();
-        $data=$request->validate([
+        $data = $request->validate([
             'name' => 'required',
             'address' => 'required',
             'phone_number' => 'required',
             'email' => 'required',
-            'total' => 'required'
+            'payment' => 'required',
+            'total' => 'required',
+            'note' => 'nullable'
         ]);
 
-        $trans= new Transaction();
+        $trans = new Transaction();
         $trans->name=$data['name'];
         $trans->address=$data['address'];
         $trans->phone_number=$data['phone_number'];
@@ -53,6 +57,7 @@ class TransactionController extends Controller
         $trans->save();
         $trans_id=$trans->id;
         $i=0;
+//        dd(session('cart'));
         foreach(session('cart')->products as  $product){
             echo ($product['id']);
             $product_order[$i]=([
@@ -61,10 +66,10 @@ class TransactionController extends Controller
                 'number' => $product['quanty'],
             ]);
             $i++;
-
         }
         $trans->orders()->attach($product_order);
         $request->session()->forget('cart');
+//        alert()->success('Đặt hàng thành công!');
         SendEmail::dispatch($trans)->delay(now()->addMinute(1));
         return redirect()->route('guest.index');
     }
@@ -74,11 +79,14 @@ class TransactionController extends Controller
         $trans = Transaction::find($id);
         $orders = Order::all();
         $e = Order::where('trans_id', $trans->id)->get();
+        $sizes = Size::all();
 
         $product_prices = ProductPrice::all();
+        foreach ($product_prices as $product_price)
+//            dd($product_price->color);
 
         $products = Product::all();
-        return view('admin.transactions.show',compact('user','trans','products', 'orders', 'product_prices'));
+        return view('admin.transactions.show',compact('user','trans','products', 'orders', 'product_prices', 'sizes'));
     }
 
     public function edit($id)
