@@ -83,31 +83,31 @@
                                         </tr><!-- tb-tnx-item -->
                                         </thead>
                                         <tbody>
-                                        @foreach($transactions as $transaction)
+                                        @foreach($orders as $order)
                                             <tr class="tb-tnx-item">
                                                 <td class="tb-tnx-id">
-                                                    <a href="#"><span>{{$transaction->id}}</span></a>
+                                                    <a href="#"><span>{{$order->id}}</span></a>
                                                 </td>
                                                 <td class="tb-tnx-info">
                                                     <div class="tb-tnx-desc">
-                                                        <span class="title">{{$transaction->name}}</span>
+                                                        <span class="title">{{$order->name}}</span>
                                                     </div>
                                                     <div class="tb-tnx-date">
-                                                        <span class="date">1{{$transaction->created_at}}</span>
+                                                        <span class="date">1{{$order->created_at}}</span>
                                                     </div>
                                                 </td>
                                                 <td class="tb-tnx-amount is-alt">
                                                     <div class="tb-tnx-total">
-                                                        <span class="amount">{{number_format($transaction->total)}}</span>
+                                                        <span class="amount">{{number_format($order->total)}}</span>
                                                     </div>
                                                     <div class="tb-tnx-status">
-                                                        @if($transaction->status==0)
+                                                        @if($order->status==0)
                                                             <span class="badge badge-circle badge-warning">Chưa xác nhận</span>
-                                                        @elseif($transaction->status==1)
+                                                        @elseif($order->status==1)
                                                             <span class="badge badge-circle badge-gray">Đã xác nhận</span>
-                                                        @elseif($transaction->status==2)
+                                                        @elseif($order->status==2)
                                                             <span class="badge badge-circle badge-info">Đang giao hàng</span>
-                                                        @elseif($transaction->status==3)
+                                                        @elseif($order->status==3)
                                                             <span class="badge badge-circle badge-success">Đã giao</span>
                                                         @else
                                                             <span class="badge badge-circle badge-danger">Huỷ</span>
@@ -119,8 +119,8 @@
                                                         <a class="text-soft dropdown-toggle btn btn-icon btn-trigger" data-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
                                                         <div class="dropdown-menu dropdown-menu-right dropdown-menu-xs">
                                                             <ul class="link-list-plain">
-                                                                <li><a href="{{route('admin.transaction.show', ['id' => $transaction->id])}}">Xem</a></li>
-                                                                <li><a href="{{route('admin.transaction.edit', ['id' => $transaction->id])}}">Cập nhật</a></li>
+                                                                <li><a href="{{route('admin.transaction.show', ['id' => $order->id])}}">Xem</a></li>
+                                                                <li><a href="{{route('admin.transaction.edit', ['id' => $order->id])}}">Cập nhật</a></li>
                                                             </ul>
                                                         </div>
                                                     </div>
@@ -133,7 +133,7 @@
                                 </div><!-- .card-inner -->
                                 <div class="card-inner">
                                     <ul class="pagination justify-content-center justify-content-md-start">
-                                        {!!$transactions->links('pagination::bootstrap-4')!!}
+                                        {!!$orders->links('pagination::bootstrap-4')!!}
                                     </ul><!-- .pagination -->
                                 </div><!-- .card-inner -->
                             </div><!-- .card-inner-group -->

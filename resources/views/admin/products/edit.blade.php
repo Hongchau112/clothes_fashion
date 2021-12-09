@@ -22,7 +22,7 @@
                                 <div class="form-group">
                                     <label class="form-label" for="description">Mô tả <span class="text-danger">*</span></label>
                                     <div class="form-control-wrap">
-                                        <textarea class="form-control form-control-sm ckeditor" id="description" name="description"></textarea>
+                                        <textarea class="form-control form-control-sm ckeditor" id="description" name="description"  required>{{$product->description}}</textarea>
                                     </div>
                                 </div>
 

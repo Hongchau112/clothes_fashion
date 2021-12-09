@@ -10,7 +10,7 @@ class Transaction extends Model
 {
     use HasFactory;
 //    use SoftDeletes;
-    protected $table = 'transactions';
+    protected $table = 'order_detail';
     protected $fillable =[
         'name',
         'address',
@@ -20,8 +20,8 @@ class Transaction extends Model
     ];
     public function orders()
     {
-        return $this->belongsToMany('App\Models\ProductPrice','order_items',
-            'trans_id','product_price_id')->withPivot('number', 'id')->withTimestamps()->as('order_items');
+        return $this->belongsToMany('App\Models\ProductPrice','order_detail',
+            'order_id','product_price_id')->withPivot('number', 'id')->withTimestamps()->as('order_detail');
     }
 
 }

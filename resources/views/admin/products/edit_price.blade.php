@@ -11,23 +11,24 @@
                     <div class="col-md-6">
                         <label class="form-label" for="">Add Price</label>
                         <table class="" id="dynamicAddRemove">
-                            @foreach($prices as $price)
+                            @foreach($product->color as $i => $color)
                                 <tr>
 {{--                                    Goi danh sách màu ra để so sánh rồi lấy tên màu--}}
-                                    @foreach($colors as $color)
-                                        @if ($price->color_id == $color->id)
-                                            <td><input type="text" name="color[0]" placeholder="Enter color" class="form-control"  value="{{$color->name}}" /></td>
-                                        @endif
-                                    @endforeach
-                                    {{--                                    Goi danh sách size ra để so sánh rồi lấy tên màu--}}
-
-                                    <td><input type="text" name="price[0]" placeholder="Enter price" class="form-control" value="{{$price->price}}"/></td>
+                                    <td><input type="text" name="color[{{$i}}]" placeholder="Enter size" class="form-control"  value="{{$color->name}}" />
+                                    </td>
+                                    <td><input type="text" name="price[{{$i}}]" placeholder="Enter price" class="form-control" value="{{$color->product_prices->price}}"/>
+                                    </td>
+                                    @if($i==0)
+                                        <td><button type="button" name="add" id="dynamic-ar" class="btn btn-outline-primary">Add Price</button></td>
+                                    @else
+                                        <td><button type="button" class="btn btn-outline-danger remove-input-field">Delete</button></td>
+                                    @endif
                                 </tr>
                             @endforeach
-                            <tr>
-                                <td><button type="button" name="add" id="dynamic-ar" class="btn btn-outline-primary">Add Price</button></td>
-                            </tr>
-
+                            <input type="hidden" value="{{$i}}" id="idi">
+{{--                                <tr>--}}
+{{--                                    <td><button type="button" name="add" id="dynamic-ar" class="btn btn-outline-primary">Add Price</button></td>--}}
+{{--                                </tr>--}}
                         </table>
                     </div>
                     <div class="col-md-12">
@@ -47,7 +48,7 @@
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"></script>
     <script type="text/javascript">
-        var i = 0;
+        var  i = $("#idi").val();
         $("#dynamic-ar").click(function () {
             ++i;
             $("#dynamicAddRemove").append('<tr><td><input type="text" name="color[' + i +

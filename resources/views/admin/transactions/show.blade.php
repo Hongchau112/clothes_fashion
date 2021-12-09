@@ -9,18 +9,18 @@
                 <div class="invoice-contact">
                     <span class="overline-title">GIAO DỊCH</span>
                     <div class="invoice-contact-info">
-                        <h4 class="title">{{$trans->name}}</h4>
+                        <h4 class="title">{{$order->name}}</h4>
                         <ul class="list-plain">
-                            <li><em class="icon ni ni-map-pin-fill"></em><span>{{$trans->address}}<br></span></li>
-                            <li><em class="icon ni ni-call-fill"></em><span>{{$trans->phone_number}}</span></li>
+                            <li><em class="icon ni ni-map-pin-fill"></em><span>{{$order->address}}<br></span></li>
+                            <li><em class="icon ni ni-call-fill"></em><span>{{$order->phone_number}}</span></li>
                         </ul>
                     </div>
                 </div>
                 <div class="invoice-desc">
                     <h3 class="title">Invoice</h3>
                     <ul class="list-plain">
-                        <li class="invoice-id"><span>Mã giao dịch</span>:<span>{{$trans->id}}</span></li>
-                        <li class="invoice-date"><span>Ngày đặt</span>:<span>{{date('d-m-Y', strtotime($trans->created_at))}}</span></li>
+                        <li class="invoice-id"><span>Mã giao dịch</span>:<span>{{$order->id}}</span></li>
+                        <li class="invoice-date"><span>Ngày đặt</span>:<span>{{date('d-m-Y', strtotime($order->created_at))}}</span></li>
                     </ul>
                 </div>
             </div><!-- .invoice-head -->
@@ -37,50 +37,17 @@
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach($orders as $order)
-                            @if($trans->id == $order->trans_id)
-                            <tr>
-                                @foreach($product_prices as $product_price)
-                                    @if($order->product_price_id == $product_price->price_id)
-                                        @foreach($products as $product)
-                                            @if($product->id == $product_price->product_id)
-                                            <td>
-                                                    {{$product->name}}
-                                            </td>
-                                            <td>
-                                                {{number_format($product_price->price)}} đ
-                                            </td>
-                                            <td>
-                                              {{$product_price->size}}
-                                            </td>
-
-                                            <td>
-                                                @php
-                                                    $a = $product->color->count()-1;
-                                                @endphp
-                                                @if($product->color->count() > 1)
-                                                    @for($i=0; $i < $a; $i++)
-                                                        {{$product->color[$i]->name}},
-                                                    @endfor
-                                                    {{$product->color[$j]->name}}
-                                                @else
-                                                    @foreach($product->color as $color)
-                                                        {{$color->name}}
-                                                    @endforeach
-                                                @endif
-                                            </td>
-                                                @endif
-                                        @endforeach
-                                    @endif
-                                @endforeach
-                                </td>
-                                            <td>
-                                                {{$order->number}}
-                                            </td>
-                            </tr>
+                        @foreach($order_details as $order_detail)
+                            @if($order_detail->order_id == $order->id)
+                                <tr>
+                                <td>{{$order_detail->product_name}}</td>
+                                <td>{{number_format($order_detail->product_price)}}</td>
+                                <td>{{$order_detail->size}}</td>
+                                <td>{{$order_detail->color}}</td>
+                                <td>{{$order_detail->number}}</td>
+                                </tr>
                             @endif
                         @endforeach
-
                         </tbody>
                         <tfoot>
                         <td></td>
@@ -88,7 +55,7 @@
                         <tr>
                             <td colspan="2"></td>
                             <td colspan="2">Tổng tiền</td>
-                            <td colspan="3"> {{number_format($trans->total)}} VND</td>
+                            <td colspan="3"> {{number_format($order->total)}} VND</td>
                         </tr>
                         </tfoot>
                     </table>

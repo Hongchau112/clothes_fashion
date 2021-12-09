@@ -2,7 +2,7 @@
     'title' => ( $title ?? 'Chi tiết đặt hàng' )
 ])
 @section('content')
-<form action="{{route('admin.transaction.update_status', ['id' => $trans->id])}}" method="POST">
+<form action="{{route('admin.transaction.update_status', ['id' => $order->id])}}" method="POST">
     @csrf
     <div class="form-group">
         <label for="name">Thay đổi trạng thái:</label>

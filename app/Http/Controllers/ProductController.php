@@ -184,31 +184,29 @@ class ProductController extends Controller
 
         for ($i = 0; $i < count($color); $i++) {
             //Luu mau
-//            $id = Color::with('name')->findOrFail($color[$i]);
             $id_price = Color::where('name',$color[$i])->first();
 
             if (!isset($id_price)){
-                $product_color = new Color();
-                $product_color->name = $color[$i];
-                $product_color->save();
-                $id_price = $product_color->id;
+                $add_color = new Color();
+                $add_color->name = $color[$i];
+                $add_color->save();
+                $id_price = $add_color->id;
             }
         }
 
         $product = Product::find($id);
 
         for ($i = 0; $i < count($color); $i++) {
-            //Luu mau
-            $id_color = Color::where('name', $color[$i])->first()->id;
-            $add_color[$i] = [
+            $id_price = Color::where('name', $color[$i])->first()->id;
+            $product_color[$i] = [
                 'price' => $price[$i],
                 'product_id' => $product->id,
-                'color_id' => $id_color,
+                'color_id' => $id_price,
                 'date_apply' => now()
             ];
         }
 
-        $product->color()->sync($add_color);
+        $product->color()->sync($product_color);
         return redirect()->route('admin.products.index')->with('success','Đã cập nhật lại giá sản phẩm thành công!');
     }
 
