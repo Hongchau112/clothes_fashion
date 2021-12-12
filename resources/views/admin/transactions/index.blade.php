@@ -67,15 +67,15 @@
                                                                     <span>Tên giao dịch</span>
                                                                 </span>
                                                 <span class="tb-tnx-date d-md-inline-block d-none">
-                                                                    <span class="d-md-none">Date</span>
+                                                                    <span class="d-md-none">Ngày đặt</span>
                                                                     <span class="d-none d-md-block">
-                                                                        <span>Issue Date</span>
+                                                                        <span>Ngày đặt</span>
                                                                     </span>
                                                                 </span>
                                             </th>
                                             <th class="tb-tnx-amount is-alt">
-                                                <span class="tb-tnx-total">Total</span>
-                                                <span class="tb-tnx-status d-none d-md-inline-block">Status</span>
+                                                <span class="tb-tnx-total">Tổng tiền</span>
+                                                <span class="b-tnx-desc d-none d-sm-inline-block">Trạng thái</span>
                                             </th>
                                             <th class="tb-tnx-action">
                                                 <span>&nbsp;</span>

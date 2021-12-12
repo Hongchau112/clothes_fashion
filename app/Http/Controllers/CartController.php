@@ -31,6 +31,7 @@ class CartController extends Controller
     {
         $product = Product::find($id);
         if ($product != null)
+
         {
             $old_cart = Session('cart') ? Session('cart'):null;
             $new_cart = new Cart($old_cart);

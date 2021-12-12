@@ -4,8 +4,12 @@
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <style>
-            body {font-family: Arial, Helvetica, sans-serif; width: 50%;  margin-left: 330px; background-image: url({{asset("/dashlite/images/avatar/bg2.png")}});}
-            form { margin: 40px;}
+            body {font-family: Arial, Helvetica, sans-serif; width: 50%;  margin-left: 330px; }
+            form {
+                margin: 40px;
+                background-color: lightblue;
+                padding-top: 20px;
+            }
             /*border: 2px solid #f1f1f1;*/
 
             input[type=text], input[type=password] {
@@ -25,7 +29,7 @@
                 border: none;
                 cursor: pointer;
                 border-radius: 12px;
-                margin-left: 150px;
+                margin-left: 125px;
             }
 
             button:hover {

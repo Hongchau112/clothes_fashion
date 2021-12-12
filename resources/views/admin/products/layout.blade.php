@@ -10,7 +10,7 @@
                     <div class="nk-block-head nk-block-head-sm">
                         <ul class="breadcrumb breadcrumb-arrow">
                             <li class="breadcrumb-item"><a href="{{route('admin.index')}}">Trang chủ</a></li>
-                            <li class="breadcrumb-item active"><a href="{{route('admin.products.index')}}">Danh sách sản phẩm</a></li>
+                            <li class="breadcrumb-item active">{{$title}}</li>
                         </ul>
                     </div><!-- .breadcrumb -->
                     <div class="nk-block-head ">

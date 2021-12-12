@@ -17,7 +17,7 @@
                     </div>
                 </div>
                 <div class="invoice-desc">
-                    <h3 class="title">Invoice</h3>
+                    <h3 class="title">Hóa đơn</h3>
                     <ul class="list-plain">
                         <li class="invoice-id"><span>Mã giao dịch</span>:<span>{{$order->id}}</span></li>
                         <li class="invoice-date"><span>Ngày đặt</span>:<span>{{date('d-m-Y', strtotime($order->created_at))}}</span></li>

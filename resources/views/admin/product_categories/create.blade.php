@@ -3,6 +3,14 @@
 ])
 
 @section('content')
+{{--    <div class="container-fluid">--}}
+{{--        <div class="nk-block-head nk-block-head-sm">--}}
+{{--            <ul class="breadcrumb breadcrumb-arrow">--}}
+{{--                <li class="breadcrumb-item active"><a href="{{route('admin.product_categories.create')}}">Tạo sản phẩm</a></li>--}}
+{{--            </ul>--}}
+{{--        </div><!-- .breadcrumb -->--}}
+
+{{--    </div>--}}
 
     <div class="card card-bordered">
         <div class="card-inner">
@@ -14,8 +22,8 @@
                                 @csrf
                                 <div class="form-group">
                                     <label class="form-label" for="name">Tên danh mục <span class="text-danger">*</span></label>
-                                    <div class="form-control-wrap">
-                                        <input type="text" class="form-control" id="name" name="name" placeholder="Tên danh mục" required>
+                                    <div class="form-control-wrap" >
+                                        <input type="text" class="form-control" id="name" name="name" placeholder="Tên danh mục" required >
                                     </div>
                                 </div>
                                 <div class="form-group">

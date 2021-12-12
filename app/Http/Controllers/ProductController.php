@@ -120,8 +120,9 @@ class ProductController extends Controller
         $price = ProductPrice::where('product_id', $id)->get();
         $images = Image::all();
         $sizes = Size::all();
+        $colors = Color::all();
 
-        return view('admin.products.show', compact('user', 'categories', 'product', 'price', 'images', 'sizes'));
+        return view('admin.products.show', compact('user', 'categories', 'product', 'price', 'images', 'sizes', 'colors'));
     }
 
     public function edit($id)
@@ -212,9 +213,10 @@ class ProductController extends Controller
 
     public function add_size()
     {
+        $sizes = Size::all();
         $user = Auth::guard('admin')->user();
 //        $product_category = ProductCategory::all();
-        return view('admin.products.size', compact('user'));
+        return view('admin.products.size', compact('user', 'sizes'));
     }
 
     public function store_size(Request $request)

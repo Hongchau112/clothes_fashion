@@ -33,6 +33,7 @@ class Cart extends Model
         }
         $new_product['quanty']++;
         $new_product['price'] = $new_product['quanty']*$price;
+
         $this->products[$id] = $new_product;
         $this->total_price += $price;
         $this->total_quanty++;

@@ -1,5 +1,5 @@
 @extends('admin.layout', [
-    'title' => ( $title ?? 'Orders Management' )
+    'title' => ( $title ?? 'Quản lý đơn hàng' )
 ])
 
 @section('main')
@@ -9,7 +9,7 @@
             <div class="nk-content-inner">
                 <div class="nk-content-body"><div class="nk-block-head nk-block-head-sm">
                         <ul class="breadcrumb breadcrumb-arrow">
-                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
                             <li class="breadcrumb-item active">{{$title}}</li>
                         </ul>
                     </div><!-- .breadcrumb -->

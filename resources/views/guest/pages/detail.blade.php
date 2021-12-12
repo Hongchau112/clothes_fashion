@@ -29,7 +29,7 @@
                             <h3 class="product-info-name" >{{ $product->name }}</h3>
                             @foreach ($product->color as $i => $color)
                                 @if ($i == 0)
-                                    <p class="product-info-price" id="price">{{number_format($color->product_prices->price)}} VND </p>
+                                    <p class="product-info-price" id="price">{{number_format($color->product_prices->price)}} VND</p>
                                     <input type="hidden" id="get_price" value="{{$color->product_prices->price}}">
                                     <input type="hidden" id="get_price_id"  value="{{$color->product_prices->price_id}}">
 {{--                                    <input type="hidden" id="total-quanty" value="{{$color->product_prices->price_id}}">--}}
@@ -117,7 +117,7 @@
                     type:"POST",
                     data:  {_token:_token, color: color, id: product_id },
                     success: function(result){
-                        $('#price').html(result);
+                        $('#price').html((new Intl.NumberFormat().format(result)) +' VND');
                         $('#get_price').attr('value', result);
                     }
                 });
@@ -204,6 +204,7 @@
                         alert('Thêm sản phẩm thành công!');
                         window.location.reload(true);
                         $('#cart').html(result);
+
                     }
                 });
             });

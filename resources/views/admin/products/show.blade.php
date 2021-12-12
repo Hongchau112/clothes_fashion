@@ -17,15 +17,15 @@
                     </div><!-- .col -->
                     <div class="col-lg-6">
                         <div class="product-info mt-5 mr-xxl-5">
-                            <h4 class="product-price text-primary">$78.00 <small class="text-muted fs-14px"></small></h4>
-                            <h2 class="product-title">{{$product->name}}</h2>
+{{--                            <h4 class="product-price text-primary">$78.00 <small class="text-muted fs-14px"></small></h4>--}}
+                            <h3 class="product-title">{{$product->name}}</h3>
                             <div class="product-meta">
                                 <ul class="d-flex g-3 gx-5">
                                     <li>
                                         <div class="fs-14px text-muted">Loại sản phẩm</div>
                                         <div class="fs-16px fw-bold text-secondary">
                                             @foreach($categories as $category)
-                                                @if($product->category_id==$category->id)
+                                                @if($product->product_type_id==$category->id)
                                                     <div>{{$category->name}}</div>
                                                 @endif
                                             @endforeach
@@ -33,14 +33,17 @@
                                     </li>
                                 </ul>
                             </div>
-
                             <div class="product-meta">
                                 <ul class="d-flex g-3 gx-5">
                                     <li>
                                         <div class="fs-14px text-muted">Giá</div>
                                         <div class="fs-16px fw-bold text-secondary">
                                             @foreach($price as $product_price)
-                                                <div class="price h4" id="price">{{$product_price->price}}</div>
+                                                @foreach($colors as $color)
+                                                    @if($color->id == $product_price->color_id)
+                                                        <div class="price h4" id="price">{{$color->name}} - {{number_format($product_price->price)}} VND</div>
+                                                    @endif
+                                                @endforeach
                                             @endforeach
                                         </div>
                                     </li>

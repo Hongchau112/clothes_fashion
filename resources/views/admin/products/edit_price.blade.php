@@ -52,8 +52,8 @@
         $("#dynamic-ar").click(function () {
             ++i;
             $("#dynamicAddRemove").append('<tr><td><input type="text" name="color[' + i +
-                ']" placeholder="Enter color" class="form-control" /></td> <td><input type="text" name="price['+ i +
-                ']" placeholder="Enter price" class="form-control" /></td><td><button type="button" class="btn btn-outline-danger remove-input-field">Delete</button></td></tr>'
+                ']" placeholder="Nhập màu" class="form-control" /></td> <td><input type="text" name="price['+ i +
+                ']" placeholder="Nhập giá" class="form-control" /></td><td><button type="button" class="btn btn-outline-danger remove-input-field">Delete</button></td></tr>'
             );
         });
         $(document).on('click', '.remove-input-field', function () {

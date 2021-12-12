@@ -203,6 +203,7 @@ h2 {
 .footer-cosmetic {
     padding-top: 27px;
     background-color: #fddcc8;
+    margin-top: 25px;
 }
 
 .footer-title {
@@ -211,6 +212,9 @@ h2 {
     letter-spacing: 1px;
 }
 
+.page-link {
+    color: #d8792d;!important;
+}
 
 .footer-caption {
   padding-top: 10px;
@@ -359,9 +363,6 @@ h2 {
   }
 
   /* footer */
-  .footer-cosmetic {
-    margin: 0 auto;
-  }
 
   .footer-content a,
   .footer-description {
@@ -511,7 +512,7 @@ span {
 }
 
 .product-info-name {
-    font-size: 40px;
+    font-size: 26px;
     font-weight: bold;
     font-family: Helvetica;
 }

@@ -59,9 +59,9 @@
                                     <label class="form-label" for="">Thêm giá</label>
                                     <table class="" id="dynamicAddRemove">
                                         <tr>
-                                            <td><input type="text" name="color[0]" placeholder="Enter color" class="form-control" />
+                                            <td><input type="text" name="color[0]" placeholder="Nhập màu" class="form-control" />
                                             </td>
-                                            <td><input type="text" name="price[0]" placeholder="Enter price" class="form-control" />
+                                            <td><input type="text" name="price[0]" placeholder="Nhập giá" class="form-control" />
                                             </td>
                                             <td><button type="button" name="add" id="dynamic-ar" class="btn btn-outline-primary">Thêm</button></td>
                                         </tr>
@@ -97,8 +97,8 @@
         $("#dynamic-ar").click(function () {
             ++i;
             $("#dynamicAddRemove").append('<tr><td><input type="text" name="color[' + i +
-                ']" placeholder="Enter color" class="form-control" /></td> <td><input type="text" name="price['+ i +
-                ']" placeholder="Enter price" class="form-control" /></td><td><button type="button" class="btn btn-outline-danger remove-input-field">Delete</button></td></tr>'
+                ']" placeholder="Nhập màu" class="form-control" /></td> <td><input type="text" name="price['+ i +
+                ']" placeholder="Nhập giá" class="form-control" /></td><td><button type="button" class="btn btn-outline-danger remove-input-field">Delete</button></td></tr>'
             );
         });
         $(document).on('click', '.remove-input-field', function () {

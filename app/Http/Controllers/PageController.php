@@ -46,7 +46,7 @@ class PageController extends Controller
         foreach($product->color as $color){
             if($color->name == $request->color)
 //                dd($color->product_price->price);
-                echo $color->product_prices->price ;
+                echo $color->product_prices->price;
 
         }
     }
@@ -80,7 +80,7 @@ class PageController extends Controller
         $categories = ProductCategory::all();
         $images = Image::all();
         return view(
-            'guest.pages.index', compact('products', 'product_selected', 'categories', 'images'));
+            'guest.pages.show_category', compact('products', 'product_selected', 'categories', 'images'));
     }
 
     public function search(Request $request)
@@ -94,7 +94,10 @@ class PageController extends Controller
             ->where('product_types.name','like','%'.$key_search.'%')->orWhere('products.name','like','%'.$key_search.'%')
             ->paginate(12);
         $products->appends(['$key_search' => $key_search]);
-        return view('guest.pages.index',compact('products','categories', 'images'));
+        if($products->count()==0)
+            return view('guest.pages.not_found',compact('products','categories', 'images') );
+        else
+            return view('guest.pages.show_category',compact('products','categories', 'images'));
     }
 
 

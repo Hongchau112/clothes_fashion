@@ -1,5 +1,5 @@
 @extends('admin.products.layout', [
-    'title' => ( $title ?? 'Tạo sản phẩm mới' )
+    'title' => ( $title ?? 'Thêm size' )
 ])
 
 @section('content')
@@ -8,6 +8,19 @@
         <div class="card-inner">
             <div class="nk-block">
                 <div class="row g-gs">
+                    <div class="product-meta">
+                        <h6 class="title">Size hiện có</h6>
+                        <ul class="custom-control-group">
+                            @foreach($sizes as $size)
+                                <li>
+                                    <div class="custom-control custom-radio custom-control-pro no-control">
+                                        <input type="radio" class="custom-control-input" name="sizeCheck{{$size->id}}" id="sizeCheck1">
+                                        <label class="custom-control-label" for="sizeCheck{{$size->id}}">{{$size->name}}</label>
+                                    </div>
+                                </li>
+                            @endforeach
+                        </ul>
+                    </div><!-- .product-meta -->
                     <div class="col-lg-12">
                         <div class="card-inner card-inner-sm">
                             <form action="{{route('admin.products.store_size')}}" method="post" enctype="multipart/form-data">

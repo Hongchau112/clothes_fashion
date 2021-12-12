@@ -3,13 +3,13 @@
         <div class="row footer-content" style="margin-right: 0px; margin-left: 55px;">
             <div id="left-side">
                 <h5 class="footer-title ">Liên hệ</h5>
-                <div class="footer-contact">
-                    <i class="fa fa-map-marker-alt"></i>
-                    <a href="#"> Ninh Kiều, Cần Thơ</a>
-                </div>
+{{--                <div class="footer-contact">--}}
+{{--                    <i class="fa fa-map-marker-alt"></i>--}}
+{{--                    <a href="#"> Ninh Kiều, Cần Thơ</a>--}}
+{{--                </div>--}}
                 <div class="footer-contact">
                     <i class="far fa-envelope"></i>
-                    <a href="mailto:info@cybersoft.edu.vn">hongchau.itg@gmail.com</a>
+                    <a href="mailto:info@cybersoft.edu.vn">hongchau2000st@gmail.com</a>
                 </div>
                 <div class="footer-contact">
                     <i class="fas fa-phone-alt"></i>

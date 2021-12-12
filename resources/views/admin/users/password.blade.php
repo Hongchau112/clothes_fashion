@@ -11,7 +11,7 @@
                     <div class="row g-gs">
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label class="form-label" for="password">Mật khẩu hiện tại</label>
+                                <label class="form-label" for="password">Mật khẩu hiện tại (*)</label>
                                 <div class="form-control-wrap">
                                     <div class="input-group">
                                         <input type="password" class="form-control" name="password" id="password"required="">
@@ -21,7 +21,7 @@
                         </div>
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label class="form-label" for="set_new_password">Mật khẩu mới</label>
+                                <label class="form-label" for="set_new_password">Mật khẩu mới (*)</label>
                                 <div class="form-control-wrap">
                                     <div class="input-group">
                                         <input type="password" class="form-control" name="set_new_password" id="set_new_password"required="">
@@ -31,7 +31,7 @@
                         </div>
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label class="form-label" for="password_confirmation">Xác nhận lại mật khẩu mới</label>
+                                <label class="form-label" for="password_confirmation">Xác nhận lại mật khẩu mới (*)</label>
                                 <div class="form-control-wrap">
                                     <div class="input-group">
                                         <input type="password" class="form-control" name="password_confirmation" id="password_confirmation"required="">

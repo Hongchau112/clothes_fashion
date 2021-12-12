@@ -39,24 +39,18 @@
                                 <div class="nk-tb-list">
                                     <div class="nk-tb-item nk-tb-head">
                                         <div class="nk-tb-col nk-tb-col-check">
-                                            <div class="custom-control custom-control-sm custom-checkbox notext">
-                                                <input type="checkbox" class="custom-control-input" id="pid">
-                                                <label class="custom-control-label" for="pid"></label>
-                                            </div>
+{{--                                            <div class="custom-control custom-control-sm custom-checkbox notext">--}}
+{{--                                                <input type="checkbox" class="custom-control-input" id="pid">--}}
+{{--                                                <label class="custom-control-label" for="pid"></label>--}}
+{{--                                            </div>--}}
                                         </div>
-                                        <div class="nk-tb-col tb-col-sm"><span>Tên danh mục</span></div>
-                                        <div class="nk-tb-col"><span>Danh mục cha</span></div>
+                                        <div class="nk-tb-col tb-col-sm"><span>Tên sản phẩm</span></div>
+                                        <div class="nk-tb-col"><span>Danh mục</span></div>
                                         <div class="nk-tb-col nk-tb-col-tools">
                                             <ul class="nk-tb-actions gx-1 my-n1">
                                                 <li class="mr-n1">
                                                     <div class="dropdown">
-                                                        <a href="#" class="dropdown-toggle btn btn-icon btn-trigger" data-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
-                                                        <div class="dropdown-menu dropdown-menu-right">
-                                                            <ul class="link-list-opt no-bdr">
-                                                                <li><a href="#"><em class="icon ni ni-edit"></em><span>Edit Selected</span></a></li>
-                                                                <li><a href="#"><em class="icon ni ni-trash"></em><span>Remove Selected</span></a></li>
-                                                            </ul>
-                                                        </div>
+                                                        <div>Tùy chọn</div>
                                                     </div>
                                                 </li>
                                             </ul>
@@ -66,8 +60,8 @@
                                         <div class="nk-tb-item">
                                             <div class="nk-tb-col nk-tb-col-check">
                                                 <div class="custom-control custom-control-sm custom-checkbox notext">
-                                                    <input type="checkbox" class="custom-control-input" id="uid{{$product->id}}">
-                                                    <label class="custom-control-label" for="uid{{$product->id}}"></label>
+{{--                                                    <input type="checkbox" class="custom-control-input" id="uid{{$product->id}}">--}}
+{{--                                                    <label class="custom-control-label" for="uid{{$product->id}}"></label>--}}
                                                 </div>
                                             </div>
                                             <div class="nk-tb-col">

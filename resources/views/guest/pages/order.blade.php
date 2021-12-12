@@ -29,19 +29,19 @@
                     </div>
 
                     <div class="mb-3" id="address-order">
-                        <label for="address" class="label">Địa chỉ</label>
+                        <label for="address" class="label">Địa chỉ *</label>
                         <input type="text" class="form-control" id="address" name="address" placeholder="Ví dụ: 95/30 Mậu Thân, Xuân Khánh, Ninh Kiều, Cần Thơ" required>
                         <span id="error_address"></span>
                     </div>
 
                     <div class="mb-3" id="mail-order">
-                        <label for="email" class="label">Email</label>
+                        <label for="email" class="label">Email *</label>
                         <input type="text" class="form-control" id="email" name="email" placeholder="Ví dụ: hongchau123@gmail.com" required>
                         <span id="error_email"></span>
                     </div>
 
                     <div class="mb-3" id="note-order">
-                        <label for="note" class="label">Note</label>
+                        <label for="note" class="label">Note *</label>
                         <textarea class="form-control" id="note" name="note" placeholder="Ví dụ: Hàng dễ vỡ, xin nhẹ tay"></textarea>
                     </div>
 

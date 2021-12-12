@@ -3,8 +3,37 @@
 ])
 
 @section('content')
-
     <!--Hien thi tat ca san pham -->
+    <section class="carouselBanner">
+        <div id="carouselCosmetics" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-target="#carouselCosmetics" data-slide-to="0" class="active"></li>
+                <li data-target="#carouselCosmetics" data-slide-to="1"></li>
+                <li data-target="#carouselCosmetics" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img class="w-100" src="{{asset('/mystore/img/MYS-2.png')}}" alt="First slide">
+                </div>
+                <div class="carousel-item">
+                    <img class="w-100" src="{{asset('/mystore/img/backg-1.jpg')}}" alt="Second slide">
+                </div>
+                <div class="carousel-item">
+                    <img class="w-100" src="{{asset('/mystore/img/MYS-1.png')}}" alt="Third slide">
+                </div>
+            </div>
+            <a class="carousel-control-prev" href="#carouselCosmetics" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselCosmetics" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+    </section>
+
+
     <section class="all_product">
     <div class="container">
         <div class="row">
@@ -27,11 +56,29 @@
                         </a>
                         <div class="card-body">
                             <div class="card-title" style="margin-top: -10px; white-space: nowrap;overflow: hidden; text-overflow: ellipsis;margin-bottom: 5px;font-family: 'Arial'; font-size: 15px; height: 30px; width: 180px;">{{ $product->name }}</div>
-                            @if($product->color->count()==2)
-                                <p style="font-family: 'Arial'; color: indianred; font-size: 19px; ">{{$product->color[0]->product_prices->price}}<span class="price-item" style="font-size: 13px; text-decoration: underline;" >đ</span> - {{$product->color[1]->product_prices->price}}<span class="price-item" style="font-size: 13px; text-decoration: underline;">đ</span></p>
+                            @if($product->color->count()>1)
+                                @php
+                                    $a = $product->color[0]->product_prices->price;
+                                    $b = $product->color[0]->product_prices->price;
+                                    $c=0;
+                                    foreach($product->color as $price)
+                                        {
+                                            if($price->product_prices->price > $a)
+                                                $a = $price->product_prices->price;
+                                            if($price->product_prices->price < $b)
+                                                $b = $price->product_prices->price;
+                                        }
+                                    if($a>$b)
+                                        {
+                                            $c=$a;
+                                            $a=$b;
+                                            $b=$c;
+                                        }
+                                @endphp
+                                <p style="font-family: 'Arial'; color: indianred; font-size: 19px; ">{{number_format($a)}}<span class="price-item" style="font-size: 13px; text-decoration: underline;" >đ</span> - {{number_format($b)}}<span class="price-item" style="font-size: 13px; text-decoration: underline;">đ</span></p>
                             @else
                                 @foreach($product->color as $color)
-                                    <p style="font-family: 'Arial'; color: indianred; font-size: 19px; ">{{$color->product_prices->price}}<span class="price-item" style="font-size: 13px; text-decoration: underline; ">đ</span></p>
+                                    <p style="font-family: 'Arial'; color: indianred; font-size: 19px; ">{{number_format($color->product_prices->price)}}<span class="price-item" style="font-size: 13px; text-decoration: underline; ">đ</span></p>
                                 @endforeach
                             @endif
                             <a  href="{{route('guest.detail', ['id' => $product->id])}}" style="background: lightsalmon; border: lightcoral; font-family: 'tinymce-mobile', sans-serif; font-size: 13px; margin-top: -15px;" class="btn btn-primary btn-more">XEM CHI TIẾT</a>
